@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<form id = "myform" onsubmit = "saveToLacaleStorage(event)">
+<label for="label1" class="form-label">Choose expense amount:</label>
+<input type="text" id="label1" Name="Chooseexpenseamount"><br><br>
+<label for="label2" class="form-label">Choose description:</label>
+<input type="text" id="label2" Name="Choosedescription"><br><br>
+<label for="label3" class="form-label">Choose a catagory:</label>
+<select Name="Choosecatogory" id="label,3">
+ <option>fuel</option>
+ <option>food</option>
+ <option>movie</option>
+ <option>electricity</option>
+ <option>Other expense</option>
+</select><br><br>
+<button onclick="addLi()">add expense</button>
+<ul id="list">
+</ul>
+
+</form>
+
+<script>
+
+ function saveToLacaleStorage(event)
+ {
+  event.preventDefault();
+  const ce = event.target.Chooseexpenseamount.value;
+  const cd = event.target.Choosedescription.value;
+  const cc = event.target.Choosecatogory.value;
+  localStorage.setItem('ce',ce);
+  localStorage.setItem('cd',cd);
+  localStorage.setItem('cc',cc);
+ }
+
+ function addLi()
+ {
+  var txtVal1 = document.getElementById('label1').value,
+      txtVal2 = document.getElementById('label2').value,
+      txtVal3 = document.getElementById('label2').value,
+      listNode = document.getElementById('list'),
+      liNode = document.createElement("li"),
+      txtNode1 = document.createTextNode(txtVal1+'-'),
+      txtNode2 = document.createTextNode(txtVal2+'-'),
+      txtNode3 = document.createTextNode(txtVal3),
+      button1 = document.createElement("button"),
+      button2 = document.createElement("button");
+      button1.innerHTML = "Edit expense";
+      button2.innerHTML = "Delete expense";
+
+
+      liNode.appendChild(txtNode1);
+      liNode.appendChild(txtNode2);
+      liNode.appendChild(txtNode3);
+      liNode.appendChild(button1);
+      liNode.appendChild(button2);
+
+      listNode.appendChild(liNode);
+ }
+
+</script>
+</body>
+</html>
